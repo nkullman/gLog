@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">gLog</string>
+    <string name="welcomeScreen_headerText">Welcome to gLog. What would you like to do?</string>
 </resources>
