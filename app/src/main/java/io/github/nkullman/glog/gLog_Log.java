@@ -16,6 +16,7 @@ public class gLog_Log {
     private double totalMilesLogged = Double.NaN;
 
     public gLog_Log(){
+        System.out.println("I made a new log");
         this.totalMilesLogged = 0;
         this.odometerReading = 0;
         this.totalGallonsLogged = 0;

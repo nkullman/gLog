@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">gLog</string>
-    <string name="welcomeScreen_headerText">Welcome to gLog. What would you like to do?</string>
+    <string name="welcomeScreen_headerText">Welcome to gLog. Already have a log going?</string>
+    <string name="button_newEntry">Add a new entry</string>
+    <string name="welcomeScreen_midTextNewLogPrompt">Don't already have one, or want to start a new log?</string>
+    <string name="button_newLog">Start a new fuel log</string>
+    <string name="action_settings">Settings</string>
 </resources>
