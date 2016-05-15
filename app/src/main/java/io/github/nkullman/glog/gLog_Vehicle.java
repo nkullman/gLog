@@ -5,7 +5,23 @@ package io.github.nkullman.glog;
  */
 public class gLog_Vehicle {
 
-    String make;
-    String model;
-    int year;
+    private String make;
+    private String model;
+    private int year;
+
+    public gLog_Vehicle(int year, String make, String model){
+        this.year = year;
+        this.make = make;
+        this.model = model;
+    }
+
+    public gLog_Vehicle(){
+        this.year = 2015;
+        this.make = "Subaru";
+        this.model = "Forester";
+    }
+
+    public gLog_Vehicle clone() {
+        return new gLog_Vehicle(this.year,this.make,this.model);
+    }
 }

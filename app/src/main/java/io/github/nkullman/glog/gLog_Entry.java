@@ -5,30 +5,68 @@ import android.location.Location;
 import java.util.Date;
 
 /**
- * This class defines an entry the log
+ * Defines an entry the log
  * Created by Nick on 5/8/2016.
  */
 public class gLog_Entry {
 
-    gLog_Log log = null;
-    gLog_Vehicle vehicle = null;
-    double odometerReading = Double.NaN; // vehicle's current odometer reading
-    Date date = null; // date of refueling
-    String stationOwner = null; // "Shell", "Texaco", etc.
-    String geoloc = null; // currently just have them type it in
+    private gLog_Log log = null;
+    private double odometerReading = Double.NaN; // vehicle's current odometer reading
+    private Date date = null; // date of refueling
+    private String stationOwner = null; // "Shell", "Texaco", etc.
+    private String geoloc = null; // currently just have them type it in
+    private double pricePerGallon = Double.NaN;
+    private double gallons = Double.NaN;
     // Location geoloc = null; TODO add ability to get user's current location
 
     public gLog_Entry(gLog_Log log){
+        this.log = log;
         this.date = new Date();
-        this.geoloc = this.log.getLastEntryLocation();
-        this.stationOwner = this.log.getLastEntryStation();
-        this.odometerReading = this.log.getLastEntryOdometer();
-        this.vehicle = this.log.getLastEntryVehicle();
+        this.geoloc = this.log.getEntry(this.log.getNumEntries()-1).getLocation();
+        this.stationOwner = this.log.getEntry(this.log.getNumEntries()-1).getStationOwner();
+        this.odometerReading = this.log.getOdometerReading();
+        this.pricePerGallon = this.log.getEntry(this.log.getNumEntries()-1).getPricePerGallon();
+        this.gallons = 0;
     }
+
+    public gLog_Entry(gLog_Log log, Date date, String geoloc, String stationOwner, double odometerReading, double pricePerGallon, double gallons){
+        this.log = log;
+        this.date = date;
+        this.geoloc = geoloc;
+        this.stationOwner = stationOwner;
+        this.odometerReading = odometerReading;
+        this.pricePerGallon = pricePerGallon;
+        this.gallons = gallons;
+    }
+
+    public Date getDate() { return (Date) this.date.clone(); }
+
+    public void setDate(Date logEntryDate) {this.date = logEntryDate; }
 
     public String getLocation(){
         return this.geoloc;
     }
 
+    public void setLocation(String entryLocation) { this.geoloc = entryLocation; }
+
+    public String getStationOwner() { return this.stationOwner; }
+
+    public void setStationOwner(String stationOwner) { this.stationOwner = stationOwner; }
+
+    public double getOdometerReading() { return this.odometerReading; }
+
+    public void setOdometerReading(double odometerReading) { this.odometerReading = odometerReading; }
+
+    public double getPricePerGallon() { return this.pricePerGallon; }
+
+    public void setPricePerGallon(double pricePerGallon) { this.pricePerGallon = pricePerGallon; }
+
+    public double getGallons () { return this.gallons; }
+
+    public void setGallons(double gallons) { this.gallons = gallons; }
+
+    public gLog_Entry clone(){
+        return new gLog_Entry(this.log, this.date, this.getLocation(), this.stationOwner, this.odometerReading,this.pricePerGallon,this.gallons);
+    }
 
 }
