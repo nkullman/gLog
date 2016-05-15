@@ -1,0 +1,3 @@
+- [ ] Request a particular entry by date as well as index
+- [ ] Error check the entries before allowing them
+- [ ] Add ability to set location based off of device's current location (or last known location)
