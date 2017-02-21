@@ -1,28 +1,41 @@
 package io.github.nkullman.glog;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 public class WelcomeScreen extends AppCompatActivity {
-
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+    }
 
-        textView = (TextView) findViewById(R.id.textView);
+    public void addNewEntry(View view){
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView.setText("It works!");
-            }
-        });
+        Intent intent = new Intent(this, addNewEntryActivity.class);
+        String logId = ((Spinner)findViewById(R.id.logPicker_spinner)).getSelectedItem().toString();
+        intent.putExtra("log_id", logId);
+        startActivity(intent);
+        System.out.println("You pressed 'Add new entry'");
+    }
+
+    /** Called when the user clicks the Send button */
+   /* public void sendMessage(View view) {
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText = (EditText) findViewById(R.id.edit_message);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }*/
+
+    public void startNewLog(View view){
+        // do new log stuff here
+        //Intent intent = new Intent(this, startNewLogActivity.class);
+        System.out.println("You pressed 'Add new entry'");
+
     }
 }
