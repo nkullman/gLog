@@ -70,7 +70,10 @@ public class addNewEntryActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = mPrefs.edit();
                 Gson gsonUp = new Gson();
                 String jsonUp = gsonUp.toJson(currLog);
-                editor.putString("log_"+logId, jsonUp);
+                String newLogId = logId.substring(0,logId.lastIndexOf('(')+1)
+                        +or+" mi)";
+                editor.putString("log_"+newLogId, jsonUp);
+                editor.remove("log_"+logId);
                 editor.commit();
                 System.out.println(jsonUp);
 
