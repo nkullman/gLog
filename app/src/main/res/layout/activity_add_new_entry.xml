@@ -63,7 +63,7 @@
             android:id="@+id/date_editText"
             android:layout_row="1"
             android:layout_column="3"
-            android:text="@string/dd_mm_yyyy" />
+            android:hint="@string/dd_mm_yyyy" />
 
         <EditText
             android:layout_width="match_parent"
@@ -107,7 +107,7 @@
             android:id="@+id/location_editText"
             android:layout_row="4"
             android:layout_column="3"
-            android:text="@string/locationDummyText"
+            android:hint="@string/locationDummyText"
             android:inputType="textCapSentences" />
 
         <TextView
@@ -125,7 +125,7 @@
             android:id="@+id/station_editText"
             android:layout_row="5"
             android:layout_column="3"
-            android:text="@string/FillStationDummyText"
+            android:hint="@string/FillStationDummyText"
             android:inputType="textCapWords" />
 
         <TextView
@@ -145,7 +145,7 @@
             android:layout_row="8"
             android:layout_column="0"
             android:layout_columnSpan="4"
-            android:text="@string/demoNoteField" />
+            android:hint="@string/demoNoteField" />
 
         <Button
             android:layout_width="match_parent"
