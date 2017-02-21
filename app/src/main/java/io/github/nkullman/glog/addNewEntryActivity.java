@@ -60,11 +60,8 @@ public class addNewEntryActivity extends AppCompatActivity {
                 double galsFilled = Double.parseDouble((
                         (EditText)findViewById(R.id.gals_editText)).getText().toString());
                 String loc = ((EditText)findViewById(R.id.location_editText)).getText().toString();
-                if (loc.equals("\"Sequim, WA\"")) loc = "";
                 String fs = ((EditText)findViewById(R.id.station_editText)).getText().toString();
-                if (fs.equals("\"QuikTrip, Shell, BP, etc.\"")) fs = "";
                 String notes = ((EditText)findViewById(R.id.demoNote_editText)).getText().toString();
-                if (notes.equals("\"While taking Grandma to get ice cream. Filled up with premium\"")) notes = "";
 
                 // add this new entry to the log
                 currLog.addEntry(new gLog_Entry(date,loc,fs,or,ppg,galsFilled,notes));
