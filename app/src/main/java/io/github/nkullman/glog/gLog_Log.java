@@ -79,7 +79,7 @@ public class gLog_Log {
         return result;
     }
 
-    private void addEntry(gLog_Entry entry){
+    public void addEntry(gLog_Entry entry){
 
         this.logEntries.add(entry.clone());
         this.numberOfLogEntries = logEntries.size();
