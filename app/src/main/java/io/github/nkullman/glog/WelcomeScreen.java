@@ -8,6 +8,12 @@ import android.widget.Spinner;
 
 public class WelcomeScreen extends AppCompatActivity {
 
+    // todo the welcome screen should read from the sharedpreferences thing the names of
+    // all the logs (iterate over keys whose name starts with log_[...VEHICLEINFO_odometer]
+    // populate the dropdown list for logs to choose from based off the responses from this iterating
+    // if the list is empty, then disable the "add entry" button and just enable the add new log button
+    // todo add a "view data" button or something similar
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
