@@ -6,7 +6,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.0'
-        compile files('libs/gson-2.8.0.jar')
 
 
         // NOTE: Do not place your application dependencies here; they belong
