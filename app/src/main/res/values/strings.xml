@@ -2,7 +2,14 @@
     <string name="app_name">gLog</string>
     <string name="welcomeScreen_headerText">Welcome to gLog. Already have a log going?</string>
     <string name="button_newEntry">Add a new entry</string>
-    <string name="welcomeScreen_midTextNewLogPrompt">Don't already have one, or want to start a new log?</string>
+    <string name="welcomeScreen_midTextNewLogPrompt">Don\'t already have one, or want to start a new log?</string>
     <string name="button_newLog">Start a new fuel log</string>
     <string name="action_settings">Settings</string>
+    <string name="price_per_gallon">Price per gallon*</string>
+    <string name="dd_mm_yyyy">dd/mm/yyyy</string>
+    <string name="gallons_filled">Gallons filled*</string>
+    <string name="location">Location</string>
+    <string name="filling_station">Filling station</string>
+    <string name="notes">Notes</string>
+    <string name="demoNoteField">\"While taking Grandma to get ice cream. Filled up with premium\"</string>
 </resources>
