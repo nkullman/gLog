@@ -34,7 +34,7 @@ public class addNewEntryActivity extends AppCompatActivity {
 
         // retrieve the log
         Gson gsonDn = new Gson();
-        String jsonDn = mPrefs.getString(logId,"");
+        String jsonDn = mPrefs.getString("log_"+logId,"");
         currLog = gsonDn.fromJson(jsonDn,gLog_Log.class);
 
         Button doneButton = (Button) findViewById(R.id.submitEntrybutton);
@@ -70,7 +70,7 @@ public class addNewEntryActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = mPrefs.edit();
                 Gson gsonUp = new Gson();
                 String jsonUp = gsonUp.toJson(currLog);
-                editor.putString(logId, jsonUp);
+                editor.putString("log_"+logId, jsonUp);
                 editor.commit();
                 System.out.println(jsonUp);
 
