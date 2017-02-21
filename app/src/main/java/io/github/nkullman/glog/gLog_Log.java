@@ -10,18 +10,22 @@ import java.util.Date;
 public class gLog_Log {
 
     private ArrayList<gLog_Entry> logEntries = null;
+    private int numberOfLogEntries = -1;
+    private gLog_Entry mostRecentEntry = null;
     private gLog_Vehicle vehicle = null;
-    private double odometerReading = Double.NaN;
+    private double latestOdometerReading = Double.NaN;
     private double totalGallonsLogged = Double.NaN;
     private double totalMilesLogged = Double.NaN;
 
-    public gLog_Log(){
+
+    public gLog_Log(gLog_Vehicle vehicle){
         System.out.println("I made a new log");
         this.totalMilesLogged = 0;
-        this.odometerReading = 0;
         this.totalGallonsLogged = 0;
         this.logEntries = new ArrayList<>();
-        this.vehicle = new gLog_Vehicle();
+        this.numberOfLogEntries = logEntries.size();
+        this.vehicle = vehicle.clone();
+        this.latestOdometerReading = this.vehicle.getOdometer_reading();
     }
 
     public gLog_Entry getEntry(int index){
@@ -46,7 +50,7 @@ public class gLog_Log {
 
     public int getLogEntryIndex(gLog_Entry entry){
         for (int i = 0; i < this.getNumEntries(); i++)
-            if (getEntry(i).getDate().equals(entry.getDate()))
+            if (getEntry(i).getOdometerReading() == entry.getOdometerReading())
                 return i;
 
         return -1;
@@ -60,18 +64,12 @@ public class gLog_Log {
         return this.vehicle.clone();
     }
 
+    public double getLastOdometerReading() { return this.latestOdometerReading; }
 
-    public String addEntry(gLog_Entry entry){
-        if (logEntries.size() < 1) {
-            return addInitialEntry(entry);
-        } else {
-            return addNewEntry(entry);
-        }
-    }
-
-    public double getOdometerReading() { return this.odometerReading; }
     public double getTotalGallonsLogged() { return this.totalGallonsLogged; }
+
     public double getTotalMilesLogged() { return this.totalMilesLogged; }
+
     public ArrayList<gLog_Entry> getAllLogEntries() { return cloneLogEntries(); }
 
     private ArrayList<gLog_Entry> cloneLogEntries() {
@@ -81,19 +79,15 @@ public class gLog_Log {
         return result;
     }
 
-    private String addInitialEntry(gLog_Entry entry){
+    private void addEntry(gLog_Entry entry){
 
-        // check for issues with the entry (odometer
-        return "Why am I returning a string?";
-    }
-
-    private String addNewEntry(gLog_Entry entry){
-
-        // check for issues with entry (odometer reading greater than previous, ...)
-        this.totalMilesLogged += entry.getOdometerReading() - this.odometerReading;
+        this.logEntries.add(entry.clone());
+        this.numberOfLogEntries = logEntries.size();
+        this.mostRecentEntry = entry.clone();
+        this.vehicle.setOdometer_reading(entry.getOdometerReading());
+        this.totalMilesLogged += entry.getOdometerReading() - this.latestOdometerReading;
         this.totalGallonsLogged += entry.getGallons();
-        this.odometerReading = entry.getOdometerReading();
-        return "Why a string??";
+        this.latestOdometerReading = entry.getOdometerReading();
     }
 
 }
