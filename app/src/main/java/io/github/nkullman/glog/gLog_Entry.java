@@ -5,16 +5,16 @@ import android.location.Location;
 import java.util.Date;
 
 /**
- * Defines an entry the log
+ * Defines an entry in the log
  * Created by Nick on 5/8/2016.
  */
 public class gLog_Entry {
 
-    private gLog_Log log = null;
+    private gLog_Log log = null; // the log to which this entry belongs
     private double odometerReading = Double.NaN; // vehicle's current odometer reading
     private Date date = null; // date of refueling
     private String stationOwner = null; // "Shell", "Texaco", etc.
-    private String geoloc = null; // currently just have them type it in
+    private String geoloc = null; // currently just have user provide string
     private double pricePerGallon = Double.NaN;
     private double gallons = Double.NaN;
     // Location geoloc = null; TODO add ability to get user's current location
@@ -24,9 +24,17 @@ public class gLog_Entry {
         this.date = new Date();
         this.geoloc = this.log.getEntry(this.log.getNumEntries()-1).getLocation();
         this.stationOwner = this.log.getEntry(this.log.getNumEntries()-1).getStationOwner();
-        this.odometerReading = this.log.getOdometerReading();
+        this.odometerReading = this.log.getLastOdometerReading();
         this.pricePerGallon = this.log.getEntry(this.log.getNumEntries()-1).getPricePerGallon();
         this.gallons = 0;
+    }
+
+    public gLog_Entry(gLog_Log log, Date date, double odometerReading, double pricePerGallon, double gallons) {
+        this.log = log;
+        this.date = date;
+        this.odometerReading = odometerReading;
+        this.pricePerGallon = pricePerGallon;
+        this.gallons = gallons;
     }
 
     public gLog_Entry(gLog_Log log, Date date, String geoloc, String stationOwner, double odometerReading, double pricePerGallon, double gallons){
