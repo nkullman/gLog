@@ -10,7 +10,6 @@ import java.util.Date;
  */
 public class gLog_Entry {
 
-    private gLog_Log log = null; // the log to which this entry belongs
     private double odometerReading = Double.NaN; // vehicle's current odometer reading
     private Date date = null; // date of refueling
     private String stationOwner = null; // "Shell", "Texaco", etc.
@@ -20,26 +19,7 @@ public class gLog_Entry {
     private String note = null;
     // Location geoloc = null; TODO add ability to get user's current location
 
-    public gLog_Entry(gLog_Log log){
-        this.log = log;
-        this.date = new Date();
-        this.geoloc = this.log.getEntry(this.log.getNumEntries()-1).getLocation();
-        this.stationOwner = this.log.getEntry(this.log.getNumEntries()-1).getStationOwner();
-        this.odometerReading = this.log.getLastOdometerReading();
-        this.pricePerGallon = this.log.getEntry(this.log.getNumEntries()-1).getPricePerGallon();
-        this.gallons = 0;
-    }
-
-    public gLog_Entry(gLog_Log log, Date date, double odometerReading, double pricePerGallon, double gallons) {
-        this.log = log;
-        this.date = date;
-        this.odometerReading = odometerReading;
-        this.pricePerGallon = pricePerGallon;
-        this.gallons = gallons;
-    }
-
-    public gLog_Entry(gLog_Log log, Date date, String geoloc, String stationOwner, double odometerReading, double pricePerGallon, double gallons, String note){
-        this.log = log;
+    public gLog_Entry(Date date, String geoloc, String stationOwner, double odometerReading, double pricePerGallon, double gallons, String note){
         this.date = date; // TODO might have to update: arg = str, this will parse it
         this.geoloc = geoloc;
         this.stationOwner = stationOwner;
@@ -80,7 +60,7 @@ public class gLog_Entry {
     public void setNote(String note) { this.note = note;}
 
     public gLog_Entry clone(){
-        return new gLog_Entry(this.log, this.date, this.getLocation(), this.stationOwner, this.odometerReading,this.pricePerGallon,this.gallons, this.note);
+        return new gLog_Entry(this.date, this.getLocation(), this.stationOwner, this.odometerReading,this.pricePerGallon,this.gallons, this.note);
     }
 
 }
