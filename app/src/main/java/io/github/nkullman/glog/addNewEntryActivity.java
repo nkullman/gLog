@@ -74,6 +74,9 @@ public class addNewEntryActivity extends AppCompatActivity {
                 editor.commit();
                 System.out.println(jsonUp);
 
+                Intent intent = new Intent(addNewEntryActivity.this, WelcomeScreen.class);
+                startActivity(intent);
+
                 // todo update some stats, show screen w summary statistics
                 // "Since last fill! -- mpg, mi driven,..."
                 // have an OK button at the bottom of that screen
