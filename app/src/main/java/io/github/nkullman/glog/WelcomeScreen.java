@@ -14,7 +14,15 @@ import java.util.Map;
 
 public class WelcomeScreen extends AppCompatActivity {
 
-    // todo add a "view data" button or something similar
+    // todo add a "view data" button to see charts of mileage, price, etc
+    // todo add a "view log" button to view the entries in tabular form
+    // todo add a screen where you can delete old logs
+    // todo add a better icon
+    // todo improve visuals all around
+    // todo add data download
+    // todo add date picker for entries (which defaults to today)
+    // todo when dates are printed, skip the time part
+
 
     private String[] logsAvailable;
     private static final String MY_PREFS_NAME = "MyPrefsFile";
@@ -63,22 +71,10 @@ public class WelcomeScreen extends AppCompatActivity {
         String logId = ((Spinner)findViewById(R.id.logPicker_spinner)).getSelectedItem().toString();
         intent.putExtra("log_id", logId);
         startActivity(intent);
-        System.out.println("You pressed 'Add new entry'");
     }
-
-    /** Called when the user clicks the Send button */
-   /* public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }*/
 
     public void startNewLog(View view){
         Intent intent = new Intent(this, startNewLogActivity.class);
         startActivity(intent);
-        System.out.println("You pressed 'Add new log'");
-
     }
 }

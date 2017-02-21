@@ -19,7 +19,6 @@ public class gLog_Log {
 
 
     public gLog_Log(gLog_Vehicle vehicle){
-        System.out.println("I made a new log");
         this.totalMilesLogged = 0;
         this.totalGallonsLogged = 0;
         this.logEntries = new ArrayList<>();
