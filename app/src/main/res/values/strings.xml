@@ -17,4 +17,14 @@
     <string name="odometer_readingLabel">Odometer reading*</string>
     <string name="locationDummyText">\"Sequim, WA\"</string>
     <string name="FillStationDummyText">\"QuikTrip, Shell, BP, etc.\"</string>
+    <string name="NewLogHeaderText">What vehicle is this log for?</string>
+    <string name="vehicleMakeLabel">Make</string>
+    <string name="vehicleMakeDummyText">Subaru</string>
+    <string name="vehicleYearLabel">Year</string>
+    <string name="vehicleYearHint">2015</string>
+    <string name="vehicleModelLabel">Model</string>
+    <string name="vehicleModelHint">Forester</string>
+    <string name="vehicleOdometerLabel">Odometer reading</string>
+    <string name="vehicleOdometerHint">123456.78</string>
+    <string name="submitLogButtonText">Done</string>
 </resources>
