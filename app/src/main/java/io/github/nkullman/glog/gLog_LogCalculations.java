@@ -6,7 +6,7 @@ package io.github.nkullman.glog;
 public class gLog_LogCalculations {
 
     public double getDistanceTraveled(gLog_Entry firstEntry, gLog_Entry laterEntry){
-        return laterEntry.getOdometerReading() - firstEntry.getOdometerReading();
+        return Math.abs(laterEntry.getOdometerReading() - firstEntry.getOdometerReading());
     }
 
     public double getMPG(gLog_Log log, gLog_Entry firstEntry, gLog_Entry laterEntry){
@@ -18,11 +18,11 @@ public class gLog_LogCalculations {
         for (int i = firstIdx+1; i <= laterIdx; i++)
             gallons += log.getEntry(i).getGallons();
 
-        return gallons;
+        return miles/gallons;
     }
 
     // PRE: log has two or more entries
-    public double getAvgMPG(gLog_Log log) {
+    public double getMPG(gLog_Log log) {
         return (log.getTotalMilesLogged()/log.getTotalGallonsLogged());
     }
 
