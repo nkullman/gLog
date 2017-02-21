@@ -16,6 +16,9 @@ import java.util.Date;
 
 public class addNewEntryActivity extends AppCompatActivity {
 
+    private static final String MY_PREFS_NAME = "MyPrefsFile";
+    private gLog_Log currLog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -23,16 +26,16 @@ public class addNewEntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_entry);
 
         // get gLog's shared preferences
-        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        final SharedPreferences mPrefs = getSharedPreferences(MY_PREFS_NAME,MODE_PRIVATE);
 
         // get the ID of the log to which to assign the entry
         Intent intent = getIntent();
-        String logId = intent.getStringExtra("log_id");
+        final String logId = intent.getStringExtra("log_id");
 
         // retrieve the log
-        Gson gson = new Gson();
-        String json = mPrefs.getString(logId,"");
-        final gLog_Log currLog = gson.fromJson(json,gLog_Log.class);
+        Gson gsonDn = new Gson();
+        String jsonDn = mPrefs.getString(logId,"");
+        currLog = gsonDn.fromJson(jsonDn,gLog_Log.class);
 
         Button doneButton = (Button) findViewById(R.id.submitEntrybutton);
         assert doneButton != null;
@@ -63,7 +66,16 @@ public class addNewEntryActivity extends AppCompatActivity {
                 String notes = ((EditText)findViewById(R.id.demoNote_editText)).getText().toString();
                 if (notes.equals("\"While taking Grandma to get ice cream. Filled up with premium\"")) notes = "";
 
+                // add this new entry to the log
                 currLog.addEntry(new gLog_Entry(date,loc,fs,or,ppg,galsFilled,notes));
+
+                // push the changes to the log back to the shared preferences
+                SharedPreferences.Editor editor = mPrefs.edit();
+                Gson gsonUp = new Gson();
+                String jsonUp = gsonUp.toJson(currLog);
+                editor.putString(logId, jsonUp);
+                editor.commit();
+                System.out.println(jsonUp);
 
                 // todo update some stats, show screen w summary statistics
                 // "Since last fill! -- mpg, mi driven,..."
