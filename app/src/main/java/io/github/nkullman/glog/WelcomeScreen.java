@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 public class WelcomeScreen extends AppCompatActivity {
@@ -14,10 +15,20 @@ public class WelcomeScreen extends AppCompatActivity {
     // if the list is empty, then disable the "add entry" button and just enable the add new log button
     // todo add a "view data" button or something similar
 
+    private String[] logsAvailable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+
+        this.logsAvailable = new String[] {"2015 Subaru Forester (11208 mi)"};
+        // TODO this should be reading keys from the shared preferences instead
+        // add content (available logs) to the spinner
+        Spinner s = (Spinner) findViewById(R.id.logPicker_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, logsAvailable);
+        s.setAdapter(adapter);
     }
 
     public void addNewEntry(View view){
