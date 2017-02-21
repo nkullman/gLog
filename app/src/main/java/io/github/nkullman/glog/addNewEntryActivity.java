@@ -45,7 +45,13 @@ public class addNewEntryActivity extends AppCompatActivity {
                 String notes = ((EditText)findViewById(R.id.demoNote_editText)).getText().toString();
                 if (notes.equals("\"While taking Grandma to get ice cream. Filled up with premium\"")) notes = "";
 
-
+                // todo this class (intent) should take a string indicating what log the entry belongs to
+                // then it should look it up and retrieve it from the sharedpreferences using the
+                // gson object
+                // todo the welcome screen should read from the sharedpreferences thing the names of
+                // all the logs (iterate over keys whose name starts with log_[...VEHICLEINFO_odometer]
+                // populate the dropdown list for logs to choose from based off the responses from this iterating
+                // if the list is empty, then disable the "add entry" button and just enable the add new log button
 
             }
         });
