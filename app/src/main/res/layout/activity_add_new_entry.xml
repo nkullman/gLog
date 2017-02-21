@@ -13,16 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnCount="4"
-        android:rowCount="10"
+        android:rowCount="19"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Odometer reading*"
+            android:text="@string/odometer_readingLabel"
             android:id="@+id/odometerReadingLabel"
             android:layout_row="0"
             android:layout_column="0" />
@@ -40,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Date*"
+            android:text="@string/dateFieldLabel"
             android:id="@+id/dateLabel"
             android:layout_row="1"
             android:layout_column="0" />
@@ -106,7 +107,7 @@
             android:id="@+id/location_editText"
             android:layout_row="4"
             android:layout_column="3"
-            android:text="&quot;Sequim, WA&quot;"
+            android:text="@string/locationDummyText"
             android:inputType="textCapSentences" />
 
         <TextView
@@ -124,7 +125,7 @@
             android:id="@+id/station_editText"
             android:layout_row="5"
             android:layout_column="3"
-            android:text="&quot;QuikTrip, Shell, BP, etc.&quot;"
+            android:text="@string/FillStationDummyText"
             android:inputType="textCapWords" />
 
         <TextView
@@ -140,10 +141,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:id="@+id/editText"
+            android:id="@+id/demoNote_editText"
             android:layout_row="8"
             android:layout_column="0"
             android:layout_columnSpan="4"
             android:text="@string/demoNoteField" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submitEntryButtonText"
+            android:id="@+id/submitEntrybutton"
+            android:layout_row="18"
+            android:layout_column="0"
+            android:layout_columnSpan="4" />
     </GridLayout>
 </RelativeLayout>

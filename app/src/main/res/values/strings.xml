@@ -12,4 +12,9 @@
     <string name="filling_station">Filling station</string>
     <string name="notes">Notes</string>
     <string name="demoNoteField">\"While taking Grandma to get ice cream. Filled up with premium\"</string>
+    <string name="submitEntryButtonText">Done</string>
+    <string name="dateFieldLabel">Date*</string>
+    <string name="odometer_readingLabel">Odometer reading*</string>
+    <string name="locationDummyText">\"Sequim, WA\"</string>
+    <string name="FillStationDummyText">\"QuikTrip, Shell, BP, etc.\"</string>
 </resources>
