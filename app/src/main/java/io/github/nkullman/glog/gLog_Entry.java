@@ -17,6 +17,7 @@ public class gLog_Entry {
     private String geoloc = null; // currently just have user provide string
     private double pricePerGallon = Double.NaN;
     private double gallons = Double.NaN;
+    private String note = null;
     // Location geoloc = null; TODO add ability to get user's current location
 
     public gLog_Entry(gLog_Log log){
@@ -37,14 +38,15 @@ public class gLog_Entry {
         this.gallons = gallons;
     }
 
-    public gLog_Entry(gLog_Log log, Date date, String geoloc, String stationOwner, double odometerReading, double pricePerGallon, double gallons){
+    public gLog_Entry(gLog_Log log, Date date, String geoloc, String stationOwner, double odometerReading, double pricePerGallon, double gallons, String note){
         this.log = log;
-        this.date = date;
+        this.date = date; // TODO might have to update: arg = str, this will parse it
         this.geoloc = geoloc;
         this.stationOwner = stationOwner;
         this.odometerReading = odometerReading;
         this.pricePerGallon = pricePerGallon;
         this.gallons = gallons;
+        this.note = note;
     }
 
     public Date getDate() { return (Date) this.date.clone(); }
@@ -73,8 +75,12 @@ public class gLog_Entry {
 
     public void setGallons(double gallons) { this.gallons = gallons; }
 
+    public String getNote () {return this.note;}
+
+    public void setNote(String note) { this.note = note;}
+
     public gLog_Entry clone(){
-        return new gLog_Entry(this.log, this.date, this.getLocation(), this.stationOwner, this.odometerReading,this.pricePerGallon,this.gallons);
+        return new gLog_Entry(this.log, this.date, this.getLocation(), this.stationOwner, this.odometerReading,this.pricePerGallon,this.gallons, this.note);
     }
 
 }
